@@ -17,7 +17,9 @@ const dynamoDb = new AWS.DynamoDB.DocumentClient();
 const app = express();
 
 // Middleware
-app.use(cors()); // Omogućava CORS
+app.use(cors({
+  origin: 'http://localhost:3000' // Prihvata zahteve samo sa adrese frontend-a
+})); // Omogućava CORS
 app.use(bodyParser.json()); // Parsira JSON zahtev
 
 const TABLE_NAME = 'Tasks';
